@@ -1,0 +1,140 @@
+﻿@model Int32?
+
+@section ContentHeader{
+    <h1>
+        @{
+            if (Model != null)
+            {
+                <text>
+                    Product Detail
+                </text>
+            }
+            else
+            {
+                <text>
+                    New Product
+                </text>
+            }
+        }
+
+
+        @*<small>Control panel</small>*@
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="../Ticket">
+                <i class="fa fa-dashboard"></i> Products
+            </a>
+        </li>
+        @{
+
+            if (Model != null)
+            {
+                <text>
+                    <li class="active">Product Detail</li>
+                </text>
+            }
+            else
+            {
+                <li class="active">New Product</li>
+            }
+        }
+
+    </ol>
+}
+
+<script>
+    $(function () {
+        var tik = new CustomerSupport.BusinessObjects.ProductFormLoader();
+        tik.Load(@Model);
+    })
+</script>
+
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-md-12" id="product-form">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+
+                <div class="row">
+                    &nbsp;
+                    </div>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove">
+                            <i class="fa fa-remove"></i>
+                        </button>
+                    </div>
+                </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="CustomerName">Product name:</label>
+                                    <input class="form-control" data-bind="value:productName" id="productName" name="productName" style="width:100%" required validationMessage="Customer name is required" />
+                                    <span class="k-invalid-msg" data-for="productName"></span>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="PhoneNumber">Price:</label>
+                                    <input class="form-control" data-role="numerictextbox" data-bind="value:price" id="price" style="width:100%" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="TicketId">Locations:</label>
+                                    <div id="location-list"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- End row-->
+                    </div>
+
+
+
+
+
+                </div>
+
+                <div class="row">
+
+                    <!-- /.col -->
+                    <div class="col-md-9">
+
+
+
+
+
+
+                    </div>
+                    <!-- /.col -->
+                </div>
+
+
+            </div>
+            <div class="box-footer">
+                <a class="btn btn-default" href="../Product">
+                    Cancel
+                </a>
+                <button data-bind="click:getObject" type="submit" class="btn btn-info pull-right">Submit</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

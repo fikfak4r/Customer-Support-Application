@@ -1,0 +1,184 @@
+﻿@model Int32?
+
+@*@section ContentHeader{
+        <h1>
+            @{
+                if (Model != null)
+                {
+                    <text>
+                        Customer Detail
+                    </text>
+                }
+                else
+                {
+                    <text>
+                        New Customer
+                    </text>
+                }
+            }
+        </h1>*@
+
+
+        <ol class="breadcrumb">
+            <li>
+                <a href="../Customer">
+                    <i class="fa fa-dashboard"></i> Customer
+                </a>
+            </li>
+            
+
+            @{
+
+                if (Model != null)
+                {
+                    <text>
+                        <li class="active">Customer Detail</li>
+                    </text>
+                }
+                else
+                {
+                    <li class="active">New Customer</li>
+                }
+            }
+
+
+        </ol>
+    }
+
+
+<script>
+    $(function () {
+        var cust = new CustomerSupport.BusinessObjects.CustomerFormLoader();
+        cust.Load(@Model);
+       
+    })
+</script>
+
+<div class="row">
+    <div class="col-xs-12 col-md-9" >
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Customer</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove">
+                        <i class="fa fa-remove"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row" id="customer-list">
+                    <div class="col-md-12">
+                        <div id="new-customer-tab">
+                            <ul>
+                                <li class="k-state-active">Customer details</li>
+                                <li class="k-state-disabled">Tickets</li>
+                                <li class="k-state-disabled">Transactions</li>
+                                <li class="k-state-disabled">SMS</li>
+                            </ul>
+
+                          
+
+
+                            <div  class="row">
+                                    <div class="col-md-9" id="customer-dtl-form">
+                                        <div class="form-group">
+                                            <label for="date">Date</label>
+                                            <input class="form-control" id="date" data-bind="value:date" data-role="datepicker" style="width:100%" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="fullName">Full name</label>
+                                            <input id="fullName" name="fullName" class="form-control" data-bind="value:fullNm" required validationMessage="Enter full name" style="width:100%;" />
+                                            <span class="k-invalid-msg" data-for="fullName"></span>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="sex">Sex</label>
+                                            <select style="width:100%" id="sex" name="sex" data-option-label="Select . . ." data-text-field="text" data-value-field="value" data-bind="value:genderVal,source:genderSrc" data-role="dropdownlist" required validationMessage="Select a gender"></select>
+                                            <span class="k-invalid-msg" data-for="sex"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="dateOfBirth">Date of Birthday</label>
+                                            <input class="k-text" data-bind="value:dob" id="dateOfBirth" style="width:100%" data-role="datepicker" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="phoneNumber">Phone number</label>
+                                            <input class="k-text form-control" data-bind="value:phnNum" id="phoneNumber" style="width:100%" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input class="k-text form-control" data-bind="value:email" id="email" style="width:100%" />
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="address">
+                                                Address
+                                            </label>
+                                            <textarea style="width:100%" data-bind="value:address" class="k-text" rows="5" placeholder="Enter ..."></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="location">Location</label>
+                                            <select style="width:100%" id="loctn" name="loctn" data-text-field="LocationName" data-value-field="LocationId" data-bind="value:loctnVal,source:loctnSrc" data-role="dropdownlist" data-option-label="Select . . ." required validationMessage="Select a location"></select>
+                                            <span class="k-invalid-msg" data-for="loctn"></span>
+                                        </div>
+                                        <div class="box-footer" style="margin-top:54px">
+                                            <a class="btn btn-default" href="../Customer">
+                                                Cancel
+                                            </a>
+                                            <button data-bind="click:getObject,text:submitBtnTxt" type="submit" class="btn btn-info pull-right"></button>
+                                        </div>
+                                    </div>
+                           
+
+                            </div>
+                            <div>
+                                <div class="row">
+                                   
+                                    <script>
+    $(function () {
+        var tik = new CustomerSupport.BusinessObjects.TicketListLoader();
+        tik.LoadInCustomer(@Model)
+        tik.HideAddButton()
+        tik.HideFilterPane()
+    })
+
+                                    </script>
+                                    @Html.Partial("~/Views/Ticket/TicketGrid.cshtml", @Model)
+                                </div>
+                            </div>
+                            <div>
+                                Content 3
+                            </div>
+                            <div>
+                                @Html.Partial("~/Views/CustomerSMS/CustomerSMS.cshtml", @Model)
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+                <style>
+                    #fullName, #phoneNumber, #email {
+                        padding: 0 4px 0 4px;
+                    }
+                </style>
+
+
+            </div>
+    
+        </div>
+    </div>
+</div>

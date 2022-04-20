@@ -1,0 +1,204 @@
+﻿@model Int32?
+
+
+
+
+
+<script type="text/x-kendo-template" id="status-template">
+    #if(data.Status){#
+    #var val = CustomerSupport.BusinessObjects.GlobalScripts.GetVal(CustomerSupport.BusinessObjects.GlobalScripts.GetStatus(), data.Status)#
+    #if(data.Status == 1){#
+    <span class='label label-info'>#=val#</span>
+    #}else if(data.Status == 2){#
+    <span class='label label-warning'>#=val#</span>
+    #}else if(data.Status == 3){#
+    <span class='label label-success'>#=val#</span>
+    #}else if(data.Status == 4){#
+    <span class='label label-danger'>#=val#</span>
+    #}else if(data.Status == 5){#
+    <span class='label label-primary'>#=val#</span>
+    #}else if(data.Status == 6){#
+    <span class='label label-primary'>#=val#</span>
+    #}#
+    #}else{#
+    <span class='label label-success'>No Data</span>
+    #}#
+</script>
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                @*<h3 class="box-title">Tickets</h3>*@
+                <div class="row">
+
+
+                    <div id="menu-section">
+
+                        <div class="col-md-9">
+                            <ul data-role="menu" id="menu" data-bind="events:{select:onSelect}">
+                                <li>Assign to Agent</li>
+                                <li>Set Type, Priority, Status and Group</li>
+                                <li>Send SMS</li>
+                            </ul>
+
+
+                        </div>
+
+
+                        <div id="assign-to-agent" data-role="dialog" data-bind="visible:isVisble" data-modal="false" style="width:450px">
+
+                            <div class="form-group">
+                                <label>Location</label>
+                                <select data-role="dropdownlist" data-text-field="LocationName" data-value-field="LocationId" data-bind="source:locationIdSource,value:locationId" style="width:100%" data-option-label=". . ."></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Group</label>
+                                <select data-role="dropdownlist" data-text-field="RoleRoleName" data-value-field="RoleId" data-bind="source:groupSource,value:group" style="width:100%" data-option-label=". . ."></select>
+                            </div>
+                            <div class="form-group">
+                                <label>User</label>
+                                <select data-role="dropdownlist" data-text-field="Username" data-value-field="UserId" data-bind="source:userSource,value:user" style="width:100%" data-option-label=". . ."></select>
+                            </div>
+
+
+                            <button type="button" class="btn bg-maroon center-block" data-bind="click:assignToAgent" style="width:259px">Submit</button>
+
+
+                        </div>
+
+                        <div id="set-status" data-role="dialog" data-bind="visible:isVisble" data-modal="false" style="width:450px">
+                            <div class="form-group">
+                                <label><span style="color:#333;font-weight:normal">Type</span></label>
+                                <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:requestTypeSource,value:requestType" style="width:100%" data-option-label=". . ."></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Priority</label>
+                                <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:prioritySource,value:priority" style="width:100%" data-option-label=". . ."></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:statusSource,value:status" style="width:100%" data-option-label=". . ."></select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Location</label>
+                                <select data-role="dropdownlist" data-text-field="LocationName" data-value-field="LocationId" data-bind="source:locationIdSource,value:locationId" style="width:100%" data-option-label=". . ."></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Group</label>
+                                <select data-role="dropdownlist" data-text-field="RoleRoleName" data-value-field="RoleId" data-bind="source:groupSource,value:group" style="width:100%" data-option-label=". . ."></select>
+                            </div>
+                            <div class="form-group">
+                                <label>User</label>
+                                <select data-role="dropdownlist" data-text-field="Username" data-value-field="UserId" data-bind="source:userSource,value:user" style="width:100%" data-option-label=". . ."></select>
+                            </div>
+
+
+                            <button type="button" class="btn bg-maroon center-block" data-bind="click:setStatus" style="width:259px">Submit</button>
+
+
+                        </div>
+
+                        <div id="send-sms" data-role="dialog" data-bind="visible:isVisble" data-modal="false" style="width:450px">
+                            <div class="form-group">
+                                <label for="follow-up-date">Phone-number:</label>
+                                <input id="follow-up-date" data-bind="value:phoneNumber" class="form-control" style="width:99%;padding:0" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="follow-up-date">Message:</label>
+                                <textarea style="width:96%" data-bind="value:message" class="form-control" rows="5" placeholder="Enter your message . . ."></textarea>
+                            </div>
+
+                            <button type="button" class="btn bg-maroon center-block" data-bind="click:sendSMS" style="width:259px">Submit</button>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <div style="margin:0;margin-bottom:8px" id="add-btn">
+                    <a class="btn bg-maroon btn-flat" href="Ticket/NewTicket">
+                        <span class="fa fa-plus"></span> &nbsp; New Ticket
+                    </a>
+                </div>
+
+                <div class="table-responsive" >
+                    <div id="pager"></div>
+                    <div id="ticket-list"></div>
+                    <div id="pager2"></div>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+
+            </div>
+            <!-- /.box-footer -->
+        </div>
+    </div>
+    <div class="col-md-3" id="filter-pane" >
+
+        <div class="box box-danger">
+
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label><span style="color:#333;font-weight:normal">Type</span></label>
+                        <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:requestTypeSource,value:requestType" style="width:100%" data-option-label=". . ."></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:prioritySource,value:priority" style="width:100%" data-option-label=". . ."></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:statusSource,value:status" style="width:100%" data-option-label=". . ."></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location</label>
+                        <select data-role="dropdownlist" data-text-field="LocationName" data-value-field="LocationId" data-bind="source:locationIdSource,value:locationId" style="width:100%" data-option-label=". . ."></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Group</label>
+                        <select data-role="dropdownlist" data-text-field="RoleRoleName" data-value-field="RoleId" data-bind="source:groupSource,value:group" style="width:100%" data-option-label=". . ."></select>
+                    </div>
+                    <div class="form-group">
+                        <label>User</label>
+                        <select data-role="dropdownlist" data-text-field="Username" data-value-field="UserId" data-bind="source:userSource,value:user" style="width:100%" data-option-label=". . ."></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input data-role="datepicker" style="width:100%" />
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+
+                    <button type="button" class="btn bg-maroon" data-bind="click:getObject" style="width:100%">Filter</button>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

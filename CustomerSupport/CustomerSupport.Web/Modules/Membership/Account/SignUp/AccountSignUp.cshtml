@@ -1,0 +1,97 @@
+﻿@model CustomerSupport.Membership.SignUpRequest
+
+@{
+    Layout = MVC.Views.Shared._LayoutNoNavigation;
+    ViewData["Title"] = "Registration Page";
+    ViewData["BodyClass"] = "register-page";
+}
+
+@section Head {
+
+}
+
+
+
+
+
+
+
+<div class="signup">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h1>Quirk</h1>
+                    <h4 class="panel-title">Create an Account!</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="or">&nbsp;</div>
+
+ @using (Html.BeginForm())
+ {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+                        <div class="form-group mb15">
+                            @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", placeholder = "Company name" })
+                            @Html.ValidationMessageFor(m => m.CompanyName)
+                         </div>
+                        <div class="form-group mb15">
+                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control", rows = "3", placeholder = "Address ..." })
+                            @Html.ValidationMessageFor(m => m.Address)
+                        </div>
+                        <div class="form-group mb15">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
+                        <div class="form-group mb15">
+                            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                        <div class="form-group mb15">
+                            @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control", type = "password", placeholder = "Retype password" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                        </div>
+
+                            <div class="form-group mb20">
+                                <label class="ckbox">
+                                    <input type="checkbox" name="AgreeToTerms">
+                                    <span>Accept terms and conditions</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-quirk btn-block">Create Account</button>
+                            </div>
+}
+
+                </div><!-- panel-body -->
+            </div><!-- panel -->
+        </div><!-- col-sm-5 -->
+        <div class="col-sm-7">
+            <div class="sign-sidebar">
+                <h3 class="signtitle mb20">Two Good Reasons to Love Quirk</h3>
+                <p>When it comes to websites or apps, one of the first impression you consider is the design. It needs to be high quality enough otherwise you will lose potential users due to bad design.</p>
+                <p>Below are some of the reasons why you love Quirk.</p>
+                <br>
+                <h4 class="reason">1. Attractive</h4>
+                <p>When your website or app is attractive to use, your users will not simply be using it, they’ll look forward to using it. This means that you should fashion the look and feel of your interface for your users.</p>
+                <br>
+                <h4 class="reason">2. Responsive</h4>
+                <p>Responsive Web design is the approach that suggests that design and development should respond to the user’s behavior and environment based on screen size, platform and orientation. This would eliminate the need for a different design and development phase for each new gadget on the market.</p>
+                <hr class="invisible">
+                <div class="form-group">
+                    <a href="@ViewBag.LoginUrl" class="btn btn-default btn-quirk btn-stroke btn-stroke-thin btn-block btn-sign">Already a member? Sign In Now!</a>
+                </div>
+            </div><!-- sign-sidebar -->
+        </div>
+    </div>
+</div><!-- signup -->
+
+
+
+@section Scripts {
+
+    @*<script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+
+}

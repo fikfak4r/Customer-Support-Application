@@ -1,0 +1,60 @@
+﻿DELETE FROM RolesLocations
+DELETE FROM UserRoles
+DELETE FROM UserPermissions
+DELETE FROM RolePermissions
+DELETE FROM RolesLocations
+DELETE FROM Roles
+DELETE FROM UsersLocations
+DELETE FROM GetCode
+DELETE FROM ActionsLogs
+DELETE FROM Customers
+DELETE FROM ProductsLocations
+DELETE FROM Locations
+DELETE FROM Users
+
+
+DELETE FROM [dbo].[PaymentsDetails]
+DELETE FROM [dbo].[TransactionsDetails]
+DELETE FROM [dbo].[Transactions]
+
+
+ DELETE FROM [dbo].[TicketProcess]
+ DELETE FROM [dbo].[TicketsSms]
+ DELETE FROM [dbo].[ActionsLogs]
+ DELETE FROM [dbo].[Tickets]
+
+ ActionLogs
+ CallProcess
+ Call
+ KnowledgeBaseLocation
+ KnowledgeBase
+ KBCategoryLocation
+ KB_Category
+ SmsLocation
+ TicketProcess
+ TransactionDetails
+ TransactionSms
+ TicketsSms
+ PaymentsDetails
+ Transactions
+ UserPermissions
+ UserPrefrences
+ UserRoles
+ UserLocations
+ VersionInfo
+ RolesLocations
+ RolePermissions
+ ProductsLocations
+ Tickets
+ CustomersSms
+ Customers
+ Users
+ Sms
+ Roles
+ Notes
+ Exceptions
+ Language
+ GetCode
+ Locations
+ Accounts
+ Products

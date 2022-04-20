@@ -1,0 +1,437 @@
+﻿
+@using Syncfusion.MVC.EJ
+
+ @*@section ContentHeader{ 
+        <h1>
+            Tickets
+          
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> Home
+                </a>
+            </li>
+            
+        </ol>
+  }*@
+
+
+
+@*<script>
+    $(function () {
+        var x = new CustomerSupport.BusinessObjects.TicketListLoader();
+        x.Load()
+    })
+</script>
+
+
+
+@Html.Partial("~/Views/Ticket/TicketGrid.cshtml*@
+
+
+@section Head{
+
+    
+
+    }
+
+
+
+    <div class="emailcontent" style="">
+        <div class="email-options" >
+            <div class="email-options">
+                <div class="settings">
+                    <ul id="menu-images">
+                        <li><i class="fa fa-plus"></i></li>
+                        <li><i class="fa fa-exclamation-triangle"></i></li>
+                        <li><i class="fa fa-folder-open"></i></li>
+                        <li><i class="fa fa-tag"></i></li>
+                        <li><i class="fa fa-trash"></i></li>
+                        <li><i class="fa fa-ellipsis-v"></i></li>
+                    </ul>
+                    
+                </div>
+                <label class="ckbox">
+             
+                </label>
+            </div><!-- email-options -->
+
+
+
+
+    
+        </div><!-- email-options -->
+  
+        <div class="list-group">
+            <div id="pager"></div>
+            <div id="ticket-list" ></div>
+            <div id="pager2"></div>
+        </div>
+
+
+    </div><!-- emailcontent -->
+
+    <div class="contentpanel emailpanel">
+        <h3 class="nomail">No mail selected</h3>
+
+
+
+
+
+
+
+
+        <div class="mailcontent hide">
+            <div class="email-header">
+                <div class="pull-right">
+                               <div class="btn-group mr5">
+                    <ul id="detail-menu">
+                        <li><a href="#"><i class="fa fa-reply"></i></a></li>
+
+                        <li>
+                            <span></span>
+                            <ul>
+                                <li><i class="fa fa-reply-all"></i> Reply to All</li>
+                                <li><a href="#"><i class="fa fa-arrow-right"></i> Foward</a></li>
+                                <li><a href="#"><i class="fa fa-print"></i> Print</a></li>
+                                <li><a href="#"><i class="fa fa-exclamation-triangle"></i> Report Spam</a></li>
+                                <li><a href="#"><i class="fa fa-trash"></i> Delete Message</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+</div>
+
+                    <div class="btn-group">
+ 
+                        <ul id="detail-menu-pagination">
+                            <li><i class="fa fa-angle-left"></i></li>
+                            <li><i class="fa fa-angle-right"></i></li>
+                        </ul>
+
+                   </div>
+
+                </div>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-circle" src="../images/photos/user1.png" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Christina R. Hill</h4>
+                        to: me, Floyd, Alia, Nicholas
+                    </div>
+                </div><!-- media -->
+            </div><!-- email-header -->
+            <hr>
+            <h3 class="email-subject">Envato Market: Your request for all earnings has been calculated <span class="markstar"><i class="fa fa-cog"></i></span></h3>
+            <div class="email-body">
+                <p>Hi Elen,</p>
+                <p>Your request to withdraw all earnings up until the end of May 2015 has been calculated.</p>
+                <p>Children of the sun, see your time has just begun, searching for your ways, through adventures every day. Every day and night, with the condor in flight, with all your friends in tow, you search for the Cities of Gold. Ah-ah-ah-ah-ah... wishing for The Cities of Gold. Ah-ah-ah-ah-ah... some day we will find The Cities of Gold. Do-do-do-do ah-ah-ah, do-do-do-do, Cities of Gold. Do-do-do-do, Cities of Gold. Ah-ah-ah-ah-ah... some day we will find The Cities of Gold.</p>
+                <p>Thunder, thunder, thundercats, Ho! Thundercats are on the move, Thundercats are loose. Feel the magic, hear the roar, Thundercats are loose. Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats! Thunder, thunder, thunder, Thundercats! Thundercats!</p>
+                <blockquote>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</blockquote>
+                <p>Mutley, you snickering, floppy eared hound. When courage is needed, you're never around. Those medals you wear on your moth-eaten chest should be there for bungling at which you are best. So, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon, stop that pigeon. Howwww! Nab him, jab him, tab him, grab him, stop that pigeon now.</p>
+            </div>
+            <br>
+            <hr>
+            <h4 class="panel-title">Attachments:</h4>
+            <ul class="list-unstyled list-attachments">
+                <li><i class="fa fa-file-pdf-o"></i> <a href="">Template_Documentation.pdf</a></li>
+                <li><i class="fa fa-file-pdf-o"></i> <a href="">Template_Documentation.pdf</a></li>
+            </ul>
+            <hr>
+            <div class="form-group email-editor">
+                <div id="summernote">Reply</div>
+            </div>
+            <button class="btn btn-success">Send Message</button>
+            <button class="btn btn-default">Save as Draft</button>
+            <br><br>
+
+        </div><!-- mailcontent -->
+
+        <div id="new-ticket-form" class="new-ticket-form hide">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="email-header">
+                        <div class="pull-right">
+                           
+
+                            <ul id="form-menu">
+                                <li><a href="#"><i class="fa fa-reply"></i></a></li>
+
+                                <li>
+                                    <span></span>
+                                    <ul>
+                                        <li><i class="fa fa-reply-all"></i> Reply to All</li>
+                                        <li><a href="#"><i class="fa fa-arrow-right"></i> Foward</a></li>
+                                        <li><a href="#"><i class="fa fa-print"></i> Print</a></li>
+                                        <li><a href="#"><i class="fa fa-exclamation-triangle"></i> Report Spam</a></li>
+                                        <li><a href="#"><i class="fa fa-trash"></i> Delete Message</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                         
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-circle" src="../images/photos/user1.png" alt="">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                           <h4> &nbsp;</h4>    
+                           
+                            </div>
+                        </div><!-- media -->
+                    </div><!-- email-header -->
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row" >
+                <div class="col-sm-8">
+                    <div class="row">
+                             <div class="col-sm-6">
+                                 <div class="form-group">
+                                     <input class="form-control" data-text-field="FullName" data-value-field="CustomerId" data-bind="value:customerNameFilter,source:customerList,events:{change:customerChangedFilter}" data-placholder="Search by Customer name" id="CustomerName" data-role="combobox" style="width:100%" data-placeholder="Filter by customer name . . ." />
+                                 </div>
+                                 </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control" data-text-field="PhoneNumber" data-value-field="CustomerId" data-bind="value:phoneNumberFilter,source:customerList,events:{change:phoneNumberChangedFilter}" id="PhoneNumber" data-role="combobox" style="width:100%" data-placeholder="Filter by phone-number . . ." />
+                            </div>
+                        </div>
+                    </div>
+                    <input class="form-control" data-bind="value:ticketIdInt" style="display:none" />
+                    <input class="form-control" data-bind="value:customerId" style="display:none" />
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="input-group ">
+                                <input type="text" placeholder="SSN" id="ssn" class="form-control k-textbox" style="border-right:none" />
+                                <span class="input-group-addon k-select" style="padding:0 10px 0 10px"><i class="glyphicon glyphicon-plus"></i></span>
+                                <span class="input-group-addon" style="padding-bottom:0"><i class="glyphicon glyphicon-edit"></i></span>
+
+                            </div>
+                   
+
+                            <div class="form-group">
+                                <input class="form-control" data-bind="value:customerName" id="customerName" name="customerName" style="width:100%" required validationMessage="Customer name is required" placeholder="Customer name" />
+                                <span class="k-invalid-msg" data-for="customerName"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control k-textbox" data-bind="value:phoneNumber" id="phoneNumber" style="width:100%" placeholder="Phone number" />
+                            </div>
+                        </div>
+                    </div>
+                       
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control" data-bind="value:ticketId" id="TicketId" name="TicketId" style="width:100%" required validationMessage="Ticket-ID is compulsory" />
+                                <span class="k-invalid-msg" data-for="TicketId"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                               
+                                <input class="form-control" data-bind="value:subject" id="subject" name="subject" style="width:100%" required validationMessage="Please enter a subject"  placeholder="Subject"/>
+                                <span class="k-invalid-msg" data-for="subject"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div classs="row">
+                        <div class="form-group nomargin">
+                            <textarea id="messageMsg" name="messageMsg" data-bind="value:message" class="form-control" rows="5" placeholder="Enter ..." required validationMessage="Enter a message"></textarea>
+                            <span class="k-invalid-msg" data-for="messageMsg"></span> 
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-4">
+                
+                 
+                   
+                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="control-label">Type:</label>
+                                    <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:requestTypeSource,value:requestType" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Priority:</label>
+                                    <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:prioritySource,value:priority" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Status</label>
+                                    <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:statusSource,value:status" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Location</label>
+                                    <select id="locationName" name="locationName" data-role="dropdownlist" data-text-field="LocationName" data-value-field="LocationId" data-bind="source:locationIdSource,value:locationId" style="width:100%" data-option-label=". . ." required validationMessage="Please select a location"></select>
+                                    <span class="k-invalid-msg" data-for="locationName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Group</label>
+                                    <select data-role="dropdownlist" data-text-field="RoleRoleName" data-value-field="RoleId" data-bind="source:groupSource,value:group" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">User</label>
+                                    <select data-role="dropdownlist" data-text-field="Username" data-value-field="UserId" data-bind="source:userSource,value:user" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="follow-up-date">Follow-up date:</label>
+                                    <input id="follow-up-date" data-bind="value:followUpDate" style="width:100%" data-role="datepicker" />
+                                </div>
+
+
+
+
+
+                                <div class="form-group">
+                                    <label>Follow-up action:</label>
+                                    <textarea class="form-control" data-bind="value:followUpAction" rows="3" placeholder="Enter ..."></textarea>
+                                </div>
+
+                 
+              
+    
+                </div>
+
+
+            </div>
+        </div>
+
+    </div><!-- contentpanel -->
+
+
+
+<script>
+    $(function () {
+
+        var x = new CustomerSupport.BusinessObjects.TicketListLoader();
+        x.Load();
+        //x.observ.submit();
+
+        var y = new CustomerSupport.BusinessObjects.TicketFormLoader();
+        y.Load();
+
+        var z = new CustomerSupport.BusinessObjects.TicketDetailLoader();
+        z.Load();
+
+    })
+</script>
+
+
+<script type="text/x-kendo-template" id="col-template">
+
+
+    <div class="list-group-item unread">
+        @*<div class="list-left">
+            <label class="ckbox">
+                <input type="checkbox"><span></span>
+            </label>
+    
+
+        </div>*@
+        <div class="media">
+            @*<div class="media-left">
+                #if(data.Status){#
+                #var val = CustomerSupport.BusinessObjects.GlobalScripts.GetVal(CustomerSupport.BusinessObjects.GlobalScripts.GetStatus(), data.Status)#
+                #if(data.Status == 1){#
+                <span class='label label-info'>#=val#</span>
+                #}else if(data.Status == 2){#
+                <span class='label label-warning'>#=val#</span>
+                #}else if(data.Status == 3){#
+                <span class='markstar label label-success'>#=val#</span>
+                #}else if(data.Status == 4){#
+                <span class='markstar label label-danger'>#=val#</span>
+                #}else if(data.Status == 5){#
+                <span class='label label-primary'>#=val#</span>
+                #}else if(data.Status == 6){#
+                <span class='label label-primary'>#=val#</span>
+                #}#
+                #}else{#
+                <span class='markstar label label-success'>No Data</span>
+                #}#
+            </div>*@
+            <div class="media-body">
+                <span class="pull-right">1 hour ago</span>
+                <h5 class="media-heading">Christina R. Hill</h5>
+                <h5>Envato Market: Your request for all ear...</h5>
+            </div>
+            <p>Hi Elen, Your request to withdraw all earnings up until the end of May 2015 has been calculated....</p>
+        </div>
+    </div>
+
+
+
+</script>
+
+
+
+<!-- Modal -->
+<div class="modal bounceIn animated" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+</div><!-- modal -->
+
+
+
+
+
+@*<script type="text/x-kendo-template" id="status-template">
+    #if(data.Status){#
+    #var val = CustomerSupport.BusinessObjects.GlobalScripts.GetVal(CustomerSupport.BusinessObjects.GlobalScripts.GetStatus(), data.Status)#
+    #if(data.Status == 1){#
+    <span class='label label-info'>#=val#</span>
+    #}else if(data.Status == 2){#
+    <span class='label label-warning'>#=val#</span>
+    #}else if(data.Status == 3){#
+    <span class='label label-success'>#=val#</span>
+    #}else if(data.Status == 4){#
+    <span class='label label-danger'>#=val#</span>
+    #}else if(data.Status == 5){#
+    <span class='label label-primary'>#=val#</span>
+    #}else if(data.Status == 6){#
+    <span class='label label-primary'>#=val#</span>
+    #}#
+    #}else{#
+    <span class='label label-success'>No Data</span>
+    #}#
+</script>*@
+
+
+
+
+
+
+
+
+
+
+
+@Html.EJ().ScriptManager();
+
+

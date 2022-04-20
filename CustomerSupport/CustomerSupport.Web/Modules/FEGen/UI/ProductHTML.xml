@@ -1,0 +1,25 @@
+<div>
+  <div class="form-group">
+    <label>Location List</label>
+    <ul class="ul-dropdown">
+      <li class="list-dropdown">
+        <input type="text" data-role="combobox" class="form-control" data-bind="value:LocationListFld,source:LocationListdtSrc,events:{change:LocationListFldChanged}" data-text-field="LocationName" data-value-field="LocationId" />
+      </li>
+      <li>
+        <span style="border-left:none" id="LocationListInplaceBtn" />
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:NameFld" />
+  </div>
+  <div class="form-group">
+    <label>Price</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:PriceFld" />
+  </div>
+  <div class="form-group">
+    <label>Product Id</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:ProductIdFld" />
+  </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model Int32?
+
+
+
+<script>
+    $(function () {
+        var x = new CustomerSupport.BusinessObjects.CustomerSMSListLoader();
+        x.LoadInCustomer(@Model)
+    })
+</script>
+
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                @*<h3 class="box-title">Tickets</h3>*@
+                <div class="row">
+
+
+
+                </div>
+                <div class="box-tools pull-right">
+                    <h1>&nbsp;</h1>
+                   
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                @*<div style="margin:0;margin-bottom:8px" id="add-btn">
+                    <a class="btn bg-maroon btn-flat" href="Ticket/NewTicket">
+                        <span class="fa fa-plus"></span> &nbsp; New Ticket
+                    </a>
+                </div>*@
+
+                <div class="table-responsive">
+                    <div id="pager"></div>
+                    <div id="customer-sms-list"></div>
+                    <div id="pager2"></div>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+
+            </div>
+            <!-- /.box-footer -->
+        </div>
+    </div>
+</div>

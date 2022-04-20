@@ -1,0 +1,72 @@
+﻿
+
+<script type="text/javascript">
+
+    $(function () {
+
+        var bondClass = new CustomerSupport.BusinessObjects.BondClass();
+
+
+        var myLstVw = $("#transaction-list").kendoListView({
+            //dataSource: y.GetKendoDataSource(),
+            template: kendo.template($("#transaction-template").html())
+        }).data("kendoListView");
+
+
+        var filterObj = new CustomerSupport.BusinessObjects.TransactionFilterMessenger(bondClass);
+        kendo.bind($("#transaction-panel"), filterObj.GetFilterObservable())
+
+        myLstVw.setDataSource(filterObj.GetKendoDataSource())
+
+
+    })
+
+</script>
+
+
+<script type="text/x-kendo-template" id="transaction-template">
+ 
+                <div class="media-body">
+                    #if(data.Subject != undefined){#
+                    <h4 class="media-heading">#= Subject #:</h4>
+                    #}#
+                    #if(data.TotalAmount != undefined){#
+                    <h4 class="media-heading">#= TotalAmount #</h4>
+                    #}#
+                    </div>
+
+    <div class="media-body">
+      
+    </div>
+</script>
+
+
+                    <div id="transaction-list" style="width:600px;height:550px">
+
+                    </div>
+
+
+<div id="transaction-panel">
+
+    <div class="form-group">
+        <label>Customer Id</label>
+        <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:CustomerIdFld,source:CustomerIddtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+    </div>
+    <div class="form-group">
+        <label>Date</label>
+        <input class="form-control" data-role="datepicker" style="width:100%" data-bind="value:DateFld" />
+    </div>
+    <div class="form-group">
+        <label>Total Amount</label>
+        <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:TotalAmountFld,source:TotalAmountdtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+    </div>
+    <div class="form-group">
+        <label>Total Amount Left</label>
+        <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:TotalAmountLeftFld,source:TotalAmountLeftdtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+    </div>
+    <div class="form-group">
+        <label>Total Amount Paid</label>
+        <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:TotalAmountPaidFld,source:TotalAmountPaiddtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+    </div>
+
+</div>

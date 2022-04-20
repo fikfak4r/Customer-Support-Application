@@ -1,0 +1,14 @@
+{
+
+	"Permission.Customer Support:": "CS",
+	"Permission.Customer Support:Ticket:": "Ticket",
+	"Permission.Customer Support:Ticket:Read": "Read",
+	"Permission.Customer Support:Ticket:Insert": "Insert",
+	"Permission.Customer Support:Ticket:Update": "Update",
+	"Permission.Customer Support:Ticket:Delete": "Delete",
+	"Permission.Customer Support:Customer:": "Customer",
+	"Permission.Customer Support:Customer:Read": "Read",
+	"Permission.Customer Support:Customer:Insert": "Insert",
+	"Permission.Customer Support:Customer:Update": "Update",
+	"Permission.Customer Support:Customer:Delete": "Delete",
+}

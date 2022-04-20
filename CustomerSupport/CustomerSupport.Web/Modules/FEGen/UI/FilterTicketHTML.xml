@@ -1,0 +1,38 @@
+<div>
+  <div class="form-group">
+    <label>Call Direction</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:CallDirectionFld,source:CallDirectiondtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Group Id</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:GroupIdFld,source:GroupIddtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Location Id</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:LocationIdFld,source:LocationIddtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Priority</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:PriorityFld,source:PrioritydtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Product Id</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:ProductIdFld,source:ProductIddtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Product Name</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:ProductNameFld,source:ProductNamedtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Status</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:StatusFld,source:StatusdtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Type</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:TypeFld,source:TypedtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>User Id</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:UserIdFld,source:UserIddtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+</div>

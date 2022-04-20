@@ -1,0 +1,7 @@
+http://www.smslive247.com/api/webservice/smssiteadmin.asmx
+
+
+
+<link href="~/Content/ej/web/gradient-lime/ej.web.all.min.css" rel="stylesheet" />
+<script src="~/Scripts/ej/jsrender.min.js"></script>
+<script src="~/Scripts/ej/ej.web.all.min.js"></script>

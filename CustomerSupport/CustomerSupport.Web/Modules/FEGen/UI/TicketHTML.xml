@@ -1,0 +1,127 @@
+<div>
+  <div class="form-group hidden">
+    <label>Creator Id</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:CreatorIdFld" />
+  </div>
+  <div class="form-group">
+    <label>Customer Id</label>
+    <ul class="ul-dropdown">
+      <li class="list-dropdown">
+        <input type="text" data-role="combobox" class="form-control" data-bind="value:CustomerIdFld,source:CustomerIddtSrc,events:{change:CustomerIdFldChanged}" data-text-field="" data-value-field="" />
+      </li>
+      <li>
+        <span style="border-left:none" id="CustomerIdInplaceBtn" />
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label>Date</label>
+    <input class="form-control" data-role="datepicker" style="width:100%" data-bind="value:DateFld" />
+  </div>
+  <div class="form-group">
+    <label>Follow Up Action</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:FollowUpActionFld" />
+  </div>
+  <div class="form-group">
+    <label>Group Id</label>
+    <ul class="ul-dropdown">
+      <li class="list-dropdown">
+        <input type="text" data-role="combobox" class="form-control" data-bind="value:GroupIdFld,source:GroupIddtSrc,events:{change:GroupIdFldChanged}" data-text-field="" data-value-field="" />
+      </li>
+      <li>
+        <span style="border-left:none" id="GroupIdInplaceBtn" />
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label>Location Id</label>
+    <ul class="ul-dropdown">
+      <li class="list-dropdown">
+        <input type="text" data-role="combobox" class="form-control" data-bind="value:LocationIdFld,source:LocationIddtSrc,events:{change:LocationIdFldChanged}" data-text-field="" data-value-field="" />
+      </li>
+      <li>
+        <span style="border-left:none" id="LocationIdInplaceBtn" />
+      </li>
+    </ul>
+  </div>
+  <div class="form-group hidden">
+    <label>Me</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:MeFld" />
+  </div>
+  <div class="form-group">
+    <label>Next Follow Up Date</label>
+    <input class="form-control" data-role="datepicker" style="width:100%" data-bind="value:NextFollowUpDateFld" />
+  </div>
+  <div class="form-group">
+    <label>Note List</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:NoteListFld" />
+  </div>
+  <div class="form-group">
+    <label>Phone Number</label>
+    <ul class="ul-dropdown">
+      <li class="list-dropdown">
+        <input type="text" data-role="combobox" class="form-control" data-bind="value:PhoneNumberFld,source:PhoneNumberdtSrc,events:{change:PhoneNumberFldChanged}" data-text-field="" data-value-field="" />
+      </li>
+      <li>
+        <span style="border-left:none" id="PhoneNumberInplaceBtn" />
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label>Priority</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:PriorityFld" />
+  </div>
+  <div class="form-group">
+    <label>Product Id</label>
+    <ul class="ul-dropdown">
+      <li class="list-dropdown">
+        <input type="text" data-role="combobox" class="form-control" data-bind="value:ProductIdFld,source:ProductIddtSrc,events:{change:ProductIdFldChanged}" data-text-field="" data-value-field="" />
+      </li>
+      <li>
+        <span style="border-left:none" id="ProductIdInplaceBtn" />
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label>Status</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:StatusFld" />
+  </div>
+  <div class="form-group">
+    <label>Subject</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:SubjectFld" />
+  </div>
+  <div class="form-group">
+    <label>Ticket Id String</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:TicketIdStringFld" />
+  </div>
+  <div class="form-group hidden">
+    <label>Transaction Id</label>
+    <ul class="ul-dropdown">
+      <li class="list-dropdown">
+        <input type="text" data-role="combobox" class="form-control" data-bind="value:TransactionIdFld,source:TransactionIddtSrc,events:{change:TransactionIdFldChanged}" data-text-field="" data-value-field="" />
+      </li>
+      <li>
+        <span style="border-left:none" id="TransactionIdInplaceBtn" />
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label>Type</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:TypeFld" />
+  </div>
+  <div class="form-group">
+    <label>User Id</label>
+    <ul class="ul-dropdown">
+      <li class="list-dropdown">
+        <input type="text" data-role="combobox" class="form-control" data-bind="value:UserIdFld,source:UserIddtSrc,events:{change:UserIdFldChanged}" data-text-field="" data-value-field="" />
+      </li>
+      <li>
+        <span style="border-left:none" id="UserIdInplaceBtn" />
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label>User Username</label>
+    <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:UserUsernameFld" />
+  </div>
+</div>

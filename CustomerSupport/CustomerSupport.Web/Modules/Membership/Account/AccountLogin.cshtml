@@ -1,0 +1,138 @@
+﻿@{    
+    Layout = MVC.Views.Shared._LayoutNoNavigation;
+    ViewData["Title"] = "Login";
+    ViewData["BodyClass"] = "login-page";
+}
+
+@using System.Collections;
+
+@model CustomerSupport.Membership.Forms.LoginForm
+
+@section Head {
+<link rel="stylesheet" href="~/Template/lib/select2/select2.css">
+<link rel="stylesheet" href="~/Template/lib/jquery-ui/jquery-ui.css">
+
+}
+
+
+
+
+        @{ 
+            List<SelectListItem> ddlList = new List<SelectListItem>();
+
+            SelectListItem lst_0 = new SelectListItem();
+            lst_0.Value = "";
+            lst_0.Text = "Select role . . .";
+
+            SelectListItem lst_1 = new SelectListItem();
+            lst_1.Value = "Admin";
+            lst_1.Text = "Admin";
+
+            SelectListItem lst_2 = new SelectListItem();
+            lst_2.Value = "Customer Support Officer";
+            lst_2.Text = "Customer Support Officer";
+
+            SelectListItem lst_3 = new SelectListItem();
+            lst_3.Value = "Point of Sales Person";
+            lst_3.Text = "Point of Sales Person";
+
+            ddlList.Add(lst_0);
+            ddlList.Add(lst_1);
+            ddlList.Add(lst_2);
+            ddlList.Add(lst_3);
+        }
+
+
+    <div class="panel signin">
+        <div class="panel-heading">
+            <h1>Quirk</h1>
+            <h4 class="panel-title">Welcome! Please signin.</h4>
+        </div>
+        <div class="panel-body">
+            
+            <div class="or">&nbsp;</div>
+            @using (Html.BeginForm())
+            {
+
+                @Html.AntiForgeryToken()
+                <span style="color:red">
+                    @Html.ValidationSummary(true)
+                </span>
+
+                <div class="form-group mb10">
+
+                    <div class="form-group">
+
+                        @Html.DropDownListFor(m => m.LoginAs, ddlList, new { id = "select5", style = "width:100%", @class = "form-control", @placeholder = "Select login as . . ." })
+                        <span style="color:red">
+                            @Html.ValidationMessageFor(m => m.LoginAs)
+                        </span>
+
+
+
+                    </div>
+                    </div>
+
+                    <div class="form-group mb10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Enter Username Fikoli" })
+                    </div>
+                        <span style="color:red">
+                            @Html.ValidationMessageFor(m => m.Username)
+                        </span>
+                    </div>
+                    <div class="form-group nomargin">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            @Html.TextBoxFor(m => m.Password, new { @class = "form-control", type = "password", placeholder = "Enter Password" })
+                            
+                    </div>
+                        <span style="color:red">
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </span>
+                    </div>
+                    <div><a href="@Url.Content(@ViewBag.ForgetPasswordUrl)" class="forgot">Forgot password?</a></div>
+                    <div class="form-group">
+                        <button type="submit" value="Login" class="btn btn-success btn-quirk btn-block">Sign In</button>
+
+                    </div>
+                    }
+                    <hr class="invisible">
+                    <div class="form-group">
+                        <a href="@Url.Content(@ViewBag.SignUpUrl)" class="btn btn-default btn-quirk btn-stroke btn-stroke-thin btn-block btn-sign">Not a member? Sign up now!</a>
+                    </div>
+                </div>
+
+                </div><!-- panel -->
+
+
+    @section Scripts {
+      
+        @*<script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+
+
+
+    }
+
+
+<script src="~/Template/lib/jquery/jquery.js"></script>
+<script src="~/Template/lib/jquery-ui/jquery-ui.js"></script>
+<script src="~/Template/lib/bootstrap/js/bootstrap.js"></script>
+<script src="~/Template/lib/select2/select2.js"></script>
+
+
+<script>
+
+    $(function () {
+
+        $("#select5").select2({ minimumResultsForSearch: Infinity });
+    })
+   
+</script>
+
+
+
+
+

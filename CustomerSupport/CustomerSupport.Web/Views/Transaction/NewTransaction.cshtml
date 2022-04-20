@@ -1,0 +1,259 @@
+﻿
+
+@section ContentHeader {
+        <h1>
+            New Transaction
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="../Transaction">
+                    <i class="fa fa-dashboard"></i> Transactions
+                </a>
+            </li>
+            <li class="active">New Transaction</li>
+        </ol>
+    }
+
+
+<script type="text/javascript">
+    $(function () {
+
+        //new Transaction().Load();
+        var tranx = new CustomerSupport.BusinessObjects.TransactionFormLoader()
+        tranx.Load();
+
+
+
+    })
+</script>
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">&nbsp;</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row" id="customer-info">
+                    <div class="col-md-12">
+                        <div class="row">
+                          
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="orderId">Order ID:</label> 
+                                        <input class="form-control" id="orderId" name="orderId" data-bind="value:orderId" required validationMessage="Order-Id is required" />
+                                        <span class="k-invalid-msg" data-for="orderId"></span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Location</label>
+                                        <select id="locationName" name="locationName" data-role="dropdownlist" data-text-field="LocationName" data-value-field="LocationId" data-bind="source:locationIdSource,value:locationId" style="width:100%" data-option-label=". . ." required validationMessage="Please select a location"></select>
+                                        <span class="k-invalid-msg" data-for="locationName"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="customerName">Name</label>
+                                    <input class="form-control" id="customerName" data-bind="value:name" placeholder="Enter name">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Phone number:</label>
+
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-phone"></i>
+                                        </div>
+                                        <input type="text" class="form-control" data-bind="value:phoneNumber" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input id="customer-date" data-role="datepicker" data-bind="value:date" title="datepicker" style="width: 100%" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" data-bind="value:email" id="exampleInputEmail1" placeholder="Enter email">
+                </div>
+            </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    @*<div class="col-md-12">
+                        <div class="form-group">
+                            <input id="customer-list-ddl" style="width:100%" />
+                        </div>
+                    </div>*@
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="transaction-dtl-grd"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <!-- accepted payments column -->
+                    <div class="col-xs-6">
+
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-6" style="margin-top:25px">
+                        <p class="lead">Totals:</p>
+                        <div id="total-amt-calc" class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th style="width:50%">Subtotal:</th>
+                                    <td><span data-bind="text:totalAmountPropFmtd"></span></td>
+                                </tr>
+
+                                <tr>
+                                    <th style="width:50%">Discount(%):</th>
+                                    <td>
+                                        <input data-role="numerictextbox" data-format="p0" data-step="0.01" data-max="1.0" data-bind="value:discount,events:{change:calculateGrandTotal}" class="form-control" id="discount" placeholder="Discount">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th style="width:50%">Tax(%):</th>
+                                    <td>
+                                        <input data-role="numerictextbox" data-format="p0" data-step="0.01" data-max="1.0" class="form-control" id="tax" data-bind="value:tax,events:{change:calculateGrandTotal}" placeholder="Tax">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:50%">Paid:</th>
+                                    <td>
+                                        <input data-role="numerictextbox" data-bind="value:paid,events:{change:pdChngd}" class="form-control" id="totalAmountPaid" placeholder="Paid">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Total:</th>
+                                    <td><span data-bind="text:grandTotalFmtd"></span></td>
+                                </tr>
+
+                                <tr>
+                                    <th>Balance:</th>
+                                    <td><span data-bind="text:bal"></span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+
+
+                <div class="row no-print">
+                    <div class="col-xs-12">
+                        <a class="btn btn-default bg-aqua" href="../Transaction">
+                            Cancel
+                        </a>
+                        <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+
+                        <button type="button" class="btn btn-success pull-right" onclick="CustomerSupport.BusinessObjects.TransactionFormLoader.Submit()">
+                            <i class="fa fa-credit-card"></i> Submit Payment
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4" style="margin-top:21px">
+                        <div class="form-group">
+                            <label>SMS</label>
+                            <textarea id="messageMsg" name="messageMsg" style="width:100%" data-bind="value:message" class="form-control" rows="5" placeholder="Enter ..." required validationMessage="Enter a message">Thank you for patronizing us. We look forward to you patronage next time.</textarea>
+                            <span class="k-invalid-msg" data-for="messageMsg"></span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                    </div>
+
+           
+                <!-- /.row -->
+                <!-- this row will not appear when printing -->
+               
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<ul id="menu">
+    <li>
+        Delete
+    </li>
+</ul>
+
+    @*<ul id="menu">
+        <li>
+            <img src="../content/web/toolbar/reply.png" /> Reply
+            <ul>
+                <li><img src="../content/web/toolbar/reply.png" /> Reply to Sender</li>
+                <li><img src="../content/web/toolbar/reply.png" /> Reply to All</li>
+            </ul>
+        </li>
+        <li class="k-separator"></li>
+        <li>
+            <img src="../content/web/toolbar/forward.png" />  Forward
+        </li>
+        <li class="k-separator"></li>
+        <li>
+            Label
+            <ul>
+                <li>None</li>
+                <li class="k-separator"></li>
+                <li><img src="../content/web/toolbar/important.png" />Important</li>
+                <li><img src="../content/web/toolbar/todo.png" />Work</li>
+                <li><img src="../content/web/toolbar/done.png" />Personal</li>
+                <li class="k-separator"></li>
+                <li>New Label</li>
+            </ul>
+        </li>
+    </ul>*@
+
+
+

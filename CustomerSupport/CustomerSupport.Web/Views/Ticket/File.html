@@ -1,0 +1,45 @@
+<script>
+    $(function () {
+        new CustomerSupport.BusinessObjects.NewTicketLoader();
+    })
+</script>
+
+
+<div class="row">
+    <div class="col-xs-12 col-md-12" id="new-ticket-form">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">New Ticket</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove">
+                        <i class="fa fa-remove"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="CustomerId">Customer</label>
+                            <input type="email" style="width: 100%" class="form-control" id="CustomerId" data-text-field="FullName" data-role="autocomplete"
+                                data-bind="source:CustomerId,value:CustomerIdVal" />
+                        </div>
+                    </div>
+                    	<div class="col-md-6">
+                              	<div class="form-group" >
+                                  <label for="PhoneNumber">Phone number</label>
+                                  <input  class="form-control" id="PhoneNumber" data-bind="value:CustomerIdVal.PhoneNumber" />
+                                  </div>
+                        </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default">Cancel</button>
+                <button data-bind="click:getObject" type="submit" class="btn btn-info pull-right">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

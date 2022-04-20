@@ -1,0 +1,171 @@
+﻿
+@*@section ContentHeader{
+    <h1>
+        Dashboard
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+        </li>
+        <li class="active">Dashboard</li>
+    </ol>
+
+}*@
+
+<script type="text/javascript">
+    $(function () {
+
+        var prodHndlr = new CustomerSupport.BusinessObjects.ProductHandler()
+        var lctnHndlr = new CustomerSupport.BusinessObjects.LocationHandler()
+
+        var bondClass = new CustomerSupport.BusinessObjects.ProductBond();
+
+        var prodMgr = new CustomerSupport.BusinessObjects.ProductMessenger(bondClass);
+        var lctnMgr = new CustomerSupport.BusinessObjects.LocationMessenger(bondClass);
+
+        bondClass.SetTeamPlayers(prodMgr, lctnMgr, prodHndlr, lctnHndlr)
+
+        prodHndlr.SetTeamPlayers(prodMgr, lctnMgr)
+
+
+
+        kendo.bind($("#product-form"), prodMgr.GetObservable())
+        kendo.bind($("#location-form"), lctnMgr.GetObservable())
+
+        var dialog = $("#dialog").kendoDialog({
+            width: "300px",
+            title: "New Product",
+            closable: true,
+            modal: false,
+        });
+
+        var locationDialog = $("#location-dialog").kendoDialog(
+            {
+            width: "500px",
+            height: "450px",
+
+            title: "New Location",
+            closable: true,
+            modal: false,
+            visible: false
+            }
+        );
+
+
+
+        $("#new-product-btn").kendoButton({
+            icon: "add",
+            click: function () {
+
+                prodMgr.Create()
+
+            }
+        });
+
+    })
+    </script>
+
+
+<style type="text/css">
+    .form-group, .input-group {
+        margin-bottom: 8px;
+    }
+</style>
+
+<style type="text/css">
+    div ul.ul-dropdown {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        width: 100%;
+        display: block;
+        border: 0px solid black;
+        list-style-type: none;
+    }
+
+        div ul.ul-dropdown li.list-dropdown {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            word-wrap: break-word;
+            float: left;
+            vertical-align: top;
+            border: 0px solid green;
+            width: 87.89%;
+        }
+
+            div ul.ul-dropdown li.list-dropdown .form-control {
+                width: 100%;
+            }
+</style>
+
+
+
+<div id="dialog">
+    <button id="new-product-btn">New Product</button>
+
+    <div id="product-form">
+        <div class="form-group">
+            <label>Location List</label>
+            <ul class="ul-dropdown">
+                <li class="list-dropdown">
+                    <input type="text" data-role="combobox" class="form-control" data-bind="value:LocationListFld,source:LocationListdtSrc,events:{change:LocationListFldChanged}" data-text-field="LocationName" data-value-field="LocationId" />
+                </li>
+                <li>
+                    <span style="border-left:none" id="LocationListInplaceBtn" />
+                </li>
+            </ul>
+        </div>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:NameFld" />
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+            <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:PriceFld" />
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+<div id="location-dialog">
+    <div id="location-form">
+        
+        <div class="form-group hidden">
+            <label>Date</label>
+            <input class="form-control" data-role="datepicker" style="width:100%" data-bind="value:DateFld" />
+        </div>
+
+        <div class="form-group">
+            <label>Location Name</label>
+            <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:LocationNameFld" />
+        </div>
+
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:AddressFld" />
+        </div>
+        
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:EmailFld" />
+        </div>
+        
+        
+        
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:PhoneNumberFld" />
+        </div>
+        
+        <div class="form-group">
+            <label>Website</label>
+            <input type="text" class="form-control k-textbox" style="width:100%" data-bind="value:WebsiteFld" />
+        </div>
+    </div></div>

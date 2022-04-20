@@ -1,0 +1,31 @@
+﻿
+namespace CustomerSupport.BusinessObjects.Columns
+{
+    using Serenity;
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using System;
+    using System.ComponentModel;
+    using System.Collections.Generic;
+    using System.IO;
+
+    [ColumnsScript("BusinessObjects.TicketSms")]
+    [BasedOnRow(typeof(Entities.TicketSmsRow))]
+    public class TicketSmsColumns
+    {
+        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        public Int32 TicketSmsId { get; set; }
+        public Int32 TicketId { get; set; }
+        public Int32 SmsId { get; set; }
+        [Width(250)]
+        public DateTime? TicketSmsDate { get; set; }
+        [Width(150), EditLink]
+        public String TicketSmsMessage { get; set; }
+        [Width(150)]
+        public Boolean Sent { get; set; }
+        [Width(150)]
+        public Boolean Delivered { get; set; }
+        [Width(150)]
+        public Boolean UnDelivered { get; set; }
+    }
+}

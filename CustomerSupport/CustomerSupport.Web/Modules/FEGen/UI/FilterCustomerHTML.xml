@@ -1,0 +1,18 @@
+<div>
+  <div class="form-group">
+    <label>Date Of Birth</label>
+    <input class="form-control" data-role="datepicker" style="width:100%" data-bind="value:DateOfBirthFld" />
+  </div>
+  <div class="form-group">
+    <label>Location Id</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:LocationIdFld,source:LocationIddtSrc" data-text-field="LocationName" data-value-field="LocationId" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Phone Number</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:PhoneNumberFld,source:PhoneNumberdtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Sex</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:SexFld,source:SexdtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+</div>

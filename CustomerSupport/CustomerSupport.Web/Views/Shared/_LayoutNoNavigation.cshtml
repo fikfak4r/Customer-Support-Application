@@ -1,0 +1,24 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @RenderSection("Head", false)
+
+
+    @{Html.RenderPartial(MVC.Views.Shared._LayoutHead);}
+
+
+    <title>@ViewData["Title"]</title>
+
+ 
+</head>
+<body class="signwrapper">
+    <div class="sign-overlay"></div>
+    <div class="signpanel"></div>
+
+
+    @RenderBody()
+    @RenderSection("Scripts", false)
+
+</body>
+</html>

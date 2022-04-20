@@ -1,0 +1,18 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "emitBOM": true,
+    "sourceMap": true,
+    "outFile": "Scripts/site/CustomerSupport.Web.js",
+    "target": "es5"
+  },
+  "include": [
+    "Imports/",
+    "Modules/",
+    "Scripts/typings/",
+    "Scripts/Project/typescript/"
+  ]
+}

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.BusinessObjects.Transaction.EntityPlural");
+}
+
+<div id="transaction-dtl-grid"></div>
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+
+        new CustomerSupport.BusinessObjects.TransactionDetailList().Load();
+
+        new CustomerSupport.BusinessObjects.TransactionGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>

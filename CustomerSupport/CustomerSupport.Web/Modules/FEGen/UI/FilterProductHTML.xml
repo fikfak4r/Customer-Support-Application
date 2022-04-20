@@ -1,0 +1,10 @@
+<div>
+  <div class="form-group">
+    <label>Location List</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:LocationListFld,source:LocationListdtSrc" data-text-field="LocationName" data-value-field="LocationId" data-option-label=". . ." />
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" data-role="dropdownlist" class="form-control" data-bind="value:NameFld,source:NamedtSrc" data-text-field="" data-value-field="" data-option-label=". . ." />
+  </div>
+</div>

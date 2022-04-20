@@ -1,0 +1,366 @@
+﻿@model Int32?
+
+@section ContentHeader{
+    <h1>
+        @{ 
+            if (Model != null)
+            {
+        <text>
+            Ticket Detail
+        </text>
+            }
+            else
+            {
+                <text>
+                    New Ticket
+        </text>
+                }
+            }
+    
+        
+        @*<small>Control panel</small>*@
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="../Ticket">
+                <i class="fa fa-dashboard"></i> Tickets
+            </a>
+        </li>
+        @{
+
+            if (Model != null)
+            {
+                <text>
+                <li class="active">Ticket Detail</li>
+                </text>
+                        }
+                        else
+                        {
+                <li class="active">New Ticket</li>
+                }
+            }
+
+    </ol>
+}
+
+<script>
+    $(function () {
+        var tik = new CustomerSupport.BusinessObjects.TicketFormLoader();
+        tik.Load(@Model);
+    })
+</script>
+
+
+
+<script type="text/x-kendo-template" id="timeline-tmplt">
+
+    <ul class="timeline timeline-inverse">
+
+        #var dt_1 = null; var bg_clr = 'bg-red'; var cnt = 0#
+        #for(var x = 0; x < data.length; x++){#
+        #var dt_2 = kendo.parseDate(data[x].InsertDate).toString().split(" ").splice(0, 4).join(" ")#
+        #if(dt_1 == null){#
+           #dt_1 = kendo.parseDate(data[x].InsertDate).toString().split(" ").splice(0, 4).join(" ")#
+            <li class="time-label">
+                <span class="#=bg_clr#">
+                    #= dt_1 #
+                </span>
+            </li>
+        #}#
+
+        #if(dt_1 != dt_2){#
+
+             #++cnt#
+             #dt_1 = dt_2#
+
+             #if(cnt == 1){#
+                 #bg_clr = 'bg-blue'#
+             #}else{#
+                #cnt = 0#
+                #bg_clr = 'bg-red'#
+                
+             #}#
+
+            <li class="time-label">
+                <span class="#=bg_clr#">
+                    #= dt_1 #
+                </span>
+            </li>
+        #}#
+
+        <li>
+            <i class="fa fa-envelope bg-blue"></i>
+
+            <div class="timeline-item">
+                <span class="time">
+                    <i class="fa fa-clock-o"></i> @*12:05*@
+                </span>
+
+                <h3 class="timeline-header">
+                   User: <a style="font-weight:normal">#=data[x].InsertUserUserName#</a> 
+                </h3>
+
+                <div class="timeline-body">
+                    #=data[x].Text#
+                </div>
+             
+            </div>
+        </li>
+
+
+
+     
+        #}#
+
+        <li>
+            <i class="fa fa-clock-o bg-gray"></i>
+        </li>
+    </ul>
+
+
+
+</script>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12" id="ticket-form">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <div class="row" >
+                    <div class="col-md-9">
+                        <div class="row">
+
+                            <div class="col-md-6" >
+                                <div class="form-group" style="margin:0">
+                                    <input class="form-control" data-text-field="FullName" data-value-field="CustomerId" data-bind="value:customerNameFilter,source:customerList,events:{change:customerChangedFilter}" data-placholder="Search by Customer name" id="CustomerName" data-role="combobox" style="width:100%" data-placeholder="Filter by customer name . . ." />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group" style="margin:0">
+                                    <input class="form-control" data-text-field="PhoneNumber" data-value-field="CustomerId" data-bind="value:phoneNumberFilter,source:customerList,events:{change:phoneNumberChangedFilter}" id="PhoneNumber" data-role="combobox" style="width:100%" data-placeholder="Filter by phone-number . . ." />
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-9">
+
+                                @*<select style="width:100%" id="id" class="form-control select2" data-bind="source:ddl" data-role="dropdownlist"></select>*@
+                                <input class="form-control" data-bind="value:ticketIdInt" style="display:none" />
+                                <input class="form-control" data-bind="value:customerId" style="display:none" />
+
+
+
+                                <div class="row">
+
+              
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="CustomerName">Customer name:</label>
+                                            <input class="form-control" data-bind="value:customerName" id="customerName" name="customerName" style="width:100%" required validationMessage="Customer name is required" />
+                                            <span class="k-invalid-msg" data-for="customerName"></span>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="PhoneNumber">Phone number:</label>
+                                            <input class="form-control" data-bind="value:phoneNumber" id="phoneNumber" style="width:100%" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="TicketId">Ticket ID:</label>
+                                            <input class="form-control" data-bind="value:ticketId" id="TicketId" name="TicketId" style="width:100%" required validationMessage="Ticket-ID is compulsory" />
+                                            <span class="k-invalid-msg" data-for="TicketId"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="subject">Subject</label>
+                                            <input class="form-control" data-bind="value:subject" id="subject" name="subject" style="width:100%" required validationMessage="Please enter a subject"/>
+                                            <span class="k-invalid-msg" data-for="subject"></span>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-12">
+                                        @*<div id="vertical-splitter" style="height: 850px">
+                                        <div id="top-pane">
+                                        </div>
+                                        <div id="bottom-pane">
+                                            <div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+
+
+
+                                        <div id="ticket-message-section">
+
+                                            <div style="margin:0;margin-bottom:8px">
+                                                <a data-bind="click:openDialog" class="btn bg-maroon btn-flat" href="#">
+                                                    <span class="fa fa-plus"></span> &nbsp; New Message
+                                                </a>
+                                            </div>
+
+                                            <div id="ticket-messsage-dialog" data-role="dialog" data-modal="false" data-bind="visible:isMsgDlgVisible">
+
+
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputPassword1">Message</label>
+                                                        <ul id="communication-medium" style="width:100%">
+                                                            <li style="width:33.33%">
+                                                                Email
+                                                            </li>
+                                                            <li style="width:33.33%">
+                                                                SMS
+                                                            </li>
+                                                            <li style="width:33.33%">
+                                                                Internal Message
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                       
+                                                        <textarea id="messageMsg" name="messageMsg" style="width:96%" data-bind="value:message" class="form-control" rows="5" placeholder="Enter ..." required validationMessage="Enter a message"></textarea>
+                                                        <span class="k-invalid-msg" data-for="messageMsg"></span> 
+
+                                                    </div>
+                                                    <button data-bind="click:submit" type="submit" class="btn btn-info pull-right">Submit</button>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div id="vertical-splitter">
+                                            <div style="height:650px !important">
+                                                <div class="nav-tabs-custom">
+
+                                                    <div class="tab-content">
+
+                                                        <!-- /.tab-pane -->
+                                                        <div class="tab-pane active" id="timeline">
+                                                            <!-- The timeline -->
+                                                        </div>
+                                                        <!-- /.tab-pane -->
+
+
+                                                    </div>
+                                                    <!-- /.tab-content -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                </div>
+                                <!-- End row-->
+                            </div>
+
+
+                            <div class="col-md-3" id="filter-pane">
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Type</label>
+                                    <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:requestTypeSource,value:requestType" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Priority</label>
+                                    <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:prioritySource,value:priority" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Status</label>
+                                    <select data-role="dropdownlist" data-text-field="text" data-value-field="value" data-bind="source:statusSource,value:status" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Location</label>
+                                    <select id="locationName" name="locationName" data-role="dropdownlist" data-text-field="LocationName" data-value-field="LocationId" data-bind="source:locationIdSource,value:locationId" style="width:100%" data-option-label=". . ." required validationMessage="Please select a location"></select>
+                                    <span class="k-invalid-msg" data-for="locationName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Group</label>
+                                    <select data-role="dropdownlist" data-text-field="RoleRoleName" data-value-field="RoleId" data-bind="source:groupSource,value:group" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">User</label>
+                                    <select data-role="dropdownlist" data-text-field="Username" data-value-field="UserId" data-bind="source:userSource,value:user" style="width:100%" data-option-label=". . ."></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="follow-up-date">Follow-up date:</label>
+                                    <input id="follow-up-date" data-bind="value:followUpDate" style="width:100%" data-role="datepicker" />
+                                </div>
+
+
+
+
+
+                                <div class="form-group">
+                                    <label>Follow-up action:</label>
+                                    <textarea class="form-control" data-bind="value:followUpAction" rows="3" placeholder="Enter ..."></textarea>
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <!-- /.col -->
+                            <div class="col-md-9">
+
+
+
+
+
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+
+
+                    </div>
+                    <div class="box-footer">
+                        <a class="btn btn-default" href="../Ticket">
+                            Cancel
+                        </a>
+                        <button data-bind="click:update,visible:isVisible" type="submit" class="btn btn-info pull-right">Update</button>
+                    </div>
+                </div>
+            </div>
+
+</div>
+
+
